@@ -1,2 +1,15 @@
-# Project-5-TeamTreehouse-FSJ
-Treehouse Fullstack Javascript Tech Degree Project 5
+# Project 5 - TeamTreehouse Fullstack Javascript
+
+## Description
+
+## Dependencies
+
+## To-Do's 
+
+## Future Add-ons
+
+## Details
+
+ - Author: Tyler Harper
+
+ - Version: 

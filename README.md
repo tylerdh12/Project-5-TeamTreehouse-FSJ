@@ -20,9 +20,9 @@ After building this project, you'll have yet another excellent portfolio piece t
 
 ## To-Do's 
 
-- [ ] Create a new repo for this project.
-- [ ] Create a README.md file for your repo that explains what the projects is and anything your user or fellow developers might need to know to use the project.
-- [ ] Download the project source files.
+- [x] Create a new repo for this project.
+- [x] Create a README.md file for your repo that explains what the projects is and anything your user or fellow developers might need to know to use the project.
+- [x] Download the project source files.
   - index.html - basic markup that you'll dynamically add DOM elements to.
   - css/styles.css - all the basic styles you'll need for this project. But you are encouraged to experiment with things like color, background color, font, shadows, transitions and animations to make this project your own.
   - css/normalize.css - for cross-browser consistency.
@@ -32,7 +32,7 @@ After building this project, you'll have yet another excellent portfolio piece t
 
 ## Project Instructions
 
-- [ ] Create your js/scripts.js file and wire it up to the HTML
+- [x] Create your js/scripts.js file and wire it up to the HTML
 - You may use jQuery if you like.
 - Other frameworks, libraries or plugins are not permitted.
 

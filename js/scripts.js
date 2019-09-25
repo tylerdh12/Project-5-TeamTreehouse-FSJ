@@ -4,8 +4,7 @@
 //---------------------------
 
 const body = $('body');
-const gallery = $('#gallery');
-
+const gallery = document.getElementById('gallery');
 
 //---------------------------
 //  FETCH FUNCTIONS
@@ -13,28 +12,70 @@ const gallery = $('#gallery');
 
 function fetchData(url){
     return fetch(url)
-        .then( data => data.json())
+        .then( data => {
+            return data.json()
+        })
         .catch( error => console.log('There was an Error fetching the Data: ', error))
 }
 
-fetchData('https://randomuser.me/api/')
-    .then( data => console.log(data))
+fetchData('https://randomuser.me/api/?results=12&nat=us')
+    .then( data => generateUser(data))
 
 //---------------------------
 //  DATA PROCESS FUNCTIONS
 //---------------------------
 
+function generateUser(data) {
+    console.log(data)
+        // assigning data from JSON file
+        for (let i = 0; i < data.results.length; i++ ){
+        const res = data.results[i]
+        const image = res.picture.medium
+        const nameFirst = res.name.first
+        const nameLast = res.name.last
+        const email = res.email
+        const street = res.location.street
+        const city = res.location.city
+        const state = res.location.state
+        const postcode = res.location.postcode
+        const fullAddress = `${street}. ${city}, ${state} ${postcode}`
+        const phone = res.phone
+        const birthday = res.dob
+
+        const html = `
+        <div class="card">
+            <div class="card-img-container">
+                <img class="card-img" src="${image}" alt="profile picture">
+            </div>
+            <div class="card-info-container">
+                <h3 id="name" class="card-name cap">${nameFirst} ${nameLast}</h3>
+                <p class="card-text">${email}</p>
+                <p class="card-text cap">${city}, ${state}</p>
+            </div>
+        </div>
+        `
+        gallery.innerHTML += html;
+    }
+}
 
 
+function generateModal(data) {
+    const res = data.results[0]
+    const street = res.location.street
+    const city = res.location.city
+    const state = res.location.state
+    const postcode = res.location.postcode
+    const fullAddress = `${street}. ${city}, ${state} ${postcode}`
+    const phone = res.phone
+    const birthday = res.dob
 
+    console.log(phone)
+    console.log(fullAddress)
 
+   
 
-
-
-
-
-
-
+    gallery.innerHTML = modal;
+}
 
 
 
@@ -56,17 +97,6 @@ fetchData('https://randomuser.me/api/')
     // <input type="submit" value="&#x1F50D;" id="serach-submit" class="search-submit">
     // </form> 
 
-// This is th Gallery Mockup
-    // <div class="card">
-    // <div class="card-img-container">
-    //     <img class="card-img" src="https://placehold.it/90x90" alt="profile picture">
-    // </div>
-    // <div class="card-info-container">
-    //     <h3 id="name" class="card-name cap">first last</h3>
-    //     <p class="card-text">email</p>
-    //     <p class="card-text cap">city, state</p>
-    // </div>
-    // </div>
 
 // This is the model mockup
     // <div class="modal-container">

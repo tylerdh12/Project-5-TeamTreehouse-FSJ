@@ -5,6 +5,7 @@
 
 const body = document.getElementById('body');
 const gallery = document.getElementById('gallery');
+const card = document.getElementsByClassName('card');
 let userData;
 //---------------------------
 //  FETCH FUNCTIONS
@@ -36,11 +37,12 @@ function generateUser(data) {
                 <p class="card-text">${user.email}</p>
                 <p class="card-text cap">${user.location.city}, ${user.location.state}</p>
             </div>
-        </div>`
+        </div>` 
 
         gallery.innerHTML += userCard;
     }
     return userData;
+    generateLink;
 }
 
 // Generates the Modal and displays it in the body after the gallery
@@ -63,11 +65,20 @@ function generateModal(index){
         </div>`
 
         $('.gallery').after('<div class="modal-container"></div>')
-        $('.modal-container').append(userModal);        
+        $('.modal-container').html(userModal);        
 
         $('.modal-container').hide();
 
         $('button#modal-close-btn').click(function(){
             $('.modal-container').hide();
         })
+}
+
+function generateLink(){
+    for (let index = 0; index < card.length; index++) {
+        card[index].addEventListener('click', function(){
+            console.log(card[index]);
+        })
+    }
+    
 }

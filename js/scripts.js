@@ -14,6 +14,7 @@ let userData;
 fetch('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,dob,phone,picture')
     .then( data => data.json())
     .then( data => generateUser(data))
+    .then(generateLink)
     .catch( error => console.log('There was an Error fetching the Data: ', error))
 
 //---------------------------
@@ -42,7 +43,6 @@ function generateUser(data) {
         gallery.innerHTML += userCard;
     }
     return userData;
-    generateLink;
 }
 
 // Generates the Modal and displays it in the body after the gallery
@@ -59,8 +59,8 @@ function generateModal(index){
                 <p class="modal-text cap">${user.location.city}</p>
                 <hr>
                 <p class="modal-text">${user.phone}</p>
-                <p class="modal-text">${user.location.street}. ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
-                <p class="modal-text">${user.birthday}</p>
+                <p class="modal-text">${user.location.street.number} ${user.location.street.name}. ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
+                <p class="modal-text">${user.dob.date}</p>
             </div>
         </div>`
 
@@ -74,11 +74,14 @@ function generateModal(index){
         })
 }
 
+
 function generateLink(){
     for (let index = 0; index < card.length; index++) {
         card[index].addEventListener('click', function(){
-            console.log(card[index]);
+            generateModal(index);
+            $('.modal-container').show();
         })
     }
     
 }
+

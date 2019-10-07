@@ -29,7 +29,7 @@ function generateUser(data) {
             const user = userData[i]
 
         const userCard = `
-        <div class="card">
+        <div class="card" id="card-${i}">
             <div class="card-img-container">
                 <img class="card-img" src="${user.picture.medium}" alt="profile picture">
             </div>
@@ -74,7 +74,6 @@ function generateModal(index){
         })
 }
 
-
 function generateLink(){
     for (let index = 0; index < card.length; index++) {
         card[index].addEventListener('click', function(){
@@ -85,3 +84,34 @@ function generateLink(){
     
 }
 
+(function searchInput(){
+
+    const search = `
+    <form>
+        <label>
+            Search: 
+        </label>
+        <input type="text" id="search-input"></input>
+    </form>
+    `
+
+    $('.search-container')
+        .append(search);
+        
+})();
+
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('keyup', inputSearch, false);
+
+function inputSearch(){
+    for(let i = 0; i < card.length; i++)
+    if(card[i].innerText
+        .toLowerCase()
+        .includes(searchInput.value.toLowerCase())){
+        card[i].style.display = "flex";
+
+    } else {
+        card[i].style.display = "none";
+    }
+}

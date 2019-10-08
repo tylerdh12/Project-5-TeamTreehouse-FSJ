@@ -7,9 +7,10 @@ const body = document.getElementById('body');
 const gallery = document.getElementById('gallery');
 const card = document.getElementsByClassName('card');
 let userData;
-//---------------------------
-//  FETCH FUNCTIONS
-//---------------------------
+
+/**
+ * FETCH
+ */
 
 fetch('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,dob,phone,picture')
     .then( data => data.json())
@@ -45,10 +46,20 @@ function generateUser(data) {
     return userData;
 }
 
-// Generates the Modal and displays it in the body after the gallery
+/**
+ * 
+ * MODAL GENERATOR
+ * 
+ * @desc Generates and Displays Modal Container
+ * @param {index} index of User
+ *  
+ */
+
 function generateModal(index){
+
     const user = userData[index]
 
+    // Generates the HTML for the Modal Container using Template Literal
     const userModal =`
         <div class="modal">
             <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
@@ -62,13 +73,23 @@ function generateModal(index){
                 <p class="modal-text">${user.location.street.number} ${user.location.street.name}. ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
                 <p class="modal-text">${user.dob.date}</p>
             </div>
-        </div>`
-
+        </div>
+        
+        <div class="modal-btn-container">
+                <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+                <button type="button" id="modal-next" class="modal-next btn">Next</button>
+            </div>
+        </div>
+        `
+        
+        // Appends content to the gallery container
         $('.gallery').after('<div class="modal-container"></div>')
         $('.modal-container').html(userModal);        
 
+        // Hides the Modal Container
         $('.modal-container').hide();
 
+        // Close Modal Button 
         $('button#modal-close-btn').click(function(){
             $('.modal-container').hide();
         })
@@ -84,6 +105,10 @@ function generateLink(){
     
 }
 
+/**
+ * SEARCH FUNCTIONS
+ */
+ 
 (function searchInput(){
 
     const search = `

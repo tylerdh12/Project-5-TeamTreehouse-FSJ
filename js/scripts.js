@@ -1,15 +1,26 @@
+/**
+ * 
+ * @author          Tyler Harper
+ * @name            TeamTreehouse Unit Project 5 - API Request  
+ * @description     TreeHouse Unit Project that uses a public API to generate users to display a working Employee Directory with Search funcionality.
+ * @date            September 11th 2019
+ * 
+ */
 
-//---------------------------
+//----------------------------------------------------------------------------------------
 //  GLOBAL VARIABLES
-//---------------------------
+//----------------------------------------------------------------------------------------
 
 const body = document.getElementById('body');
 const gallery = document.getElementById('gallery');
 const card = document.getElementsByClassName('card');
 let userData;
 
+//----------------------------------------------------------------------------------------
+//  FETCH DATA
+//----------------------------------------------------------------------------------------
 /**
- * FETCH
+ * @description Fetches user data from the Random Users API. Parses data into JSON Format and then runs the program white checking for errors
  */
 
 fetch('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,dob,phone,picture')
@@ -18,31 +29,45 @@ fetch('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,dob,
     .then(generateLink)
     .catch( error => console.log('There was an Error fetching the Data: ', error))
 
-//---------------------------
+//----------------------------------------------------------------------------------------
 //  DATA PROCESS FUNCTIONS
-//---------------------------
+//----------------------------------------------------------------------------------------
+
+/**
+ * 
+ * USER CARD GENERATOR
+ * 
+ * @description Generates User Cards and adds them to Gallery Container
+ * @param {data} JSON formated data 
+ * @returns JSON userData variable
+ * 
+ */
 
 // Generates the Users data into HTML elements then displays them on the page
 function generateUser(data) {
     userData = data.results;
+    const users = userData;
         // assigning data from JSON file
-        for (let i = 0; i < userData.length; i++ ){
-            const user = userData[i]
+        users.forEach(user => {
 
-        const userCard = `
-        <div class="card" id="card-${i}">
-            <div class="card-img-container">
-                <img class="card-img" src="${user.picture.medium}" alt="profile picture">
-            </div>
-            <div class="card-info-container">
-                <h3 id="name" class="card-name cap">${user.name.first} ${user.name.last}</h3>
-                <p class="card-text">${user.email}</p>
-                <p class="card-text cap">${user.location.city}, ${user.location.state}</p>
-            </div>
-        </div>` 
-
+            // HTML Generated for Card Container
+            const userCard = `
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="${user.picture.medium}" alt="profile picture">
+                </div>
+                <div class="card-info-container">
+                    <h3 id="name" class="card-name cap">${user.name.first} ${user.name.last}</h3>
+                    <p class="card-text">${user.email}</p>
+                    <p class="card-text cap">${user.location.city}, ${user.location.state}</p>
+                </div>
+            </div>` 
+        
+        // Add each User Card to the Gallery Container 
         gallery.innerHTML += userCard;
-    }
+
+    });
+
     return userData;
 }
 
@@ -73,9 +98,8 @@ function generateModal(index){
                 <p class="modal-text">${user.location.street.number} ${user.location.street.name}. ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
                 <p class="modal-text">${user.dob.date}</p>
             </div>
-        </div>
         
-        <div class="modal-btn-container">
+            <div class="modal-btn-container">
                 <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
                 <button type="button" id="modal-next" class="modal-next btn">Next</button>
             </div>
@@ -93,8 +117,31 @@ function generateModal(index){
         $('button#modal-close-btn').click(function(){
             $('.modal-container').hide();
         })
+
+        // Generates Modal for Next User
+        $('button#modal-next').click(function(){
+            generateModal(index + 1);
+            $('.modal-container').show()
+        })
+
+        // Generates Modal for Previous User
+        $('button#modal-prev').click(function(){
+            generateModal(index - 1);
+            $('.modal-container').show()
+        })
+
+        checkIndex(index);
 }
 
+function checkIndex(index){
+    if( index <= 0 ){
+        $('button#modal-prev').hide();
+    } else if ( index >= 11){
+        $('button#modal-next').hide();
+    }
+};
+
+ // Add Event Listener to each Card Element
 function generateLink(){
     for (let index = 0; index < card.length; index++) {
         card[index].addEventListener('click', function(){
@@ -105,10 +152,10 @@ function generateLink(){
     
 }
 
-/**
- * SEARCH FUNCTIONS
- */
- 
+//----------------------------------------------------------------------------------------
+//  SEARCH FUNCTIONS
+//----------------------------------------------------------------------------------------
+ // Self Invoked Function to add search box to Search container
 (function searchInput(){
 
     const search = `
@@ -117,8 +164,7 @@ function generateLink(){
             Search: 
         </label>
         <input type="text" id="search-input"></input>
-    </form>
-    `
+    </form>`
 
     $('.search-container')
         .append(search);
@@ -127,6 +173,7 @@ function generateLink(){
 
 const searchInput = document.getElementById('search-input');
 
+// Event listener for Search Input
 searchInput.addEventListener('keyup', inputSearch, false);
 
 function inputSearch(){
@@ -140,3 +187,22 @@ function inputSearch(){
         card[i].style.display = "none";
     }
 }
+
+
+
+/**---------------------------------------------------------------------------------------
+    NOTES : 
+    ---------------
+Color Scheme : Primary      :   
+               Secondary    :   
+               Accent       :
+               Text 1       :
+               Text 2       :
+
+------------------------------------------------------------------------------------------
+    TO-DO :
+    ---------------
+- [ ] Update Readme.md
+- [ ] 
+
+----------------------------------------------------------------------------------------*/

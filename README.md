@@ -88,14 +88,14 @@ After building this project, you'll have yet another excellent portfolio piece t
 ## Extra Credit
 
 ### Search
-- Add a way to filter the directory by name. To do this, you’ll need to adjust your API request to retrieve a user nationality that will only return data in the English alphabet.
+- [x] Add a way to filter the directory by name. To do this, you’ll need to adjust your API request to retrieve a user nationality that will only return data in the English alphabet.
 - Example markup for this feature is included in the HTML comments.
 
 ### Note: Your search feature should filters results that are already on the page. So don't request new info from the API for your search.
 
 ### Modal toggle
-- Add a way to toggle back and forth between employees when the modal window is open.
-- There should be no errors once the end or beginning of the list is reached.
+- [x] Add a way to toggle back and forth between employees when the modal window is open.
+- [x] There should be no errors once the end or beginning of the list is reached.
 - Example markup for this feature is included in the HTML comments.
 
 ### Structure, style and CSS

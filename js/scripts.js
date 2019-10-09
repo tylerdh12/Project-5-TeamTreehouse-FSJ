@@ -82,7 +82,11 @@ function generateUser(data) {
 
 function generateModal(index){
 
-    const user = userData[index]
+    const user = userData[index];
+    const birthdayDay = user.dob.date.slice(8, 10);
+    const birthdayMonth = user.dob.date.slice(5, 7);
+    const birthdayYear = user.dob.date.slice(0, 4);
+    const birthday = `${birthdayMonth} / ${birthdayDay} / ${birthdayYear}`;
 
     // Generates the HTML for the Modal Container using Template Literal
     const userModal =`
@@ -96,7 +100,7 @@ function generateModal(index){
                 <hr>
                 <p class="modal-text">${user.phone}</p>
                 <p class="modal-text">${user.location.street.number} ${user.location.street.name}. ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
-                <p class="modal-text">${user.dob.date}</p>
+                <p class="modal-text">${birthday}</p>
             </div>
         
             <div class="modal-btn-container">
@@ -159,11 +163,10 @@ function generateLink(){
 (function searchInput(){
 
     const search = `
-    <form>
-        <label>
-            Search: 
-        </label>
-        <input type="text" id="search-input"></input>
+
+    <form action="#" method="get">
+        <input type="search" id="search-input" class="search-input" placeholder="Search...">
+        <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
     </form>`
 
     $('.search-container')
@@ -172,9 +175,11 @@ function generateLink(){
 })();
 
 const searchInput = document.getElementById('search-input');
+const searchSubmit = document.getElementById('search-submit');
 
 // Event listener for Search Input
 searchInput.addEventListener('keyup', inputSearch, false);
+searchSubmit.addEventListener('click', inputSearch, false);
 
 function inputSearch(){
     for(let i = 0; i < card.length; i++)
@@ -193,11 +198,7 @@ function inputSearch(){
 /**---------------------------------------------------------------------------------------
     NOTES : 
     ---------------
-Color Scheme : Primary      :   
-               Secondary    :   
-               Accent       :
-               Text 1       :
-               Text 2       :
+    would like to have the pagination go thru the VISIBLE search results
 
 ------------------------------------------------------------------------------------------
     TO-DO :

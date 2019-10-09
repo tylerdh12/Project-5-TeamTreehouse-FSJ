@@ -107,6 +107,21 @@ After building this project, you'll have yet another excellent portfolio piece t
 - Document your style changes in your readme file and the project submission notes.
 - Do not alter the layout or position of the important elements on the page.
 
+### Changes Made to CSS
+- Setup SCSS
+- Added to Card Elements
+    - Box-Shaddow
+    - More Border Radius
+    - Removed Border
+    - Removed Border for :hover
+    - Change :hover Card BG Color
+-Added to Body Element
+    - Background Color
+- Added to Modal Container
+    - Added more Border Radius
+    - Remove Border on Modal Button Container
+
+
 ### NOTE: Getting an "Exceed Expectations" grade.
 
 - See the rubric in the "How You'll Be Graded" tab above for details on what you need to receive an "Exceed Expectations" grade.

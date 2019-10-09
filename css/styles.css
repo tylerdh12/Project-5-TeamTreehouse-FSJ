@@ -15,7 +15,7 @@ html, body {
 body {
   font-family: "Nunito", sans-serif;
   text-align: center;
-  background: rgba(235, 235, 235, 0.9);
+  background: #bfe1fb;
 }
 
 header {
@@ -103,11 +103,13 @@ header h1 {
   margin: 10px 10px 20px;
   padding: 10px;
   background: rgba(245, 245, 245, 0.9);
-  border-radius: 0.25em;
-  border: 1px solid rgba(50, 50, 50, 0.3);
   -webkit-transition: .4s ease-out;
   transition: .4s ease-out;
   overflow: hidden;
+  /* Added SCSS*/
+  -webkit-box-shadow: 2px 4px 12px;
+          box-shadow: 2px 4px 12px;
+  border-radius: 2em;
 }
 
 .card-img {
@@ -156,10 +158,11 @@ header h1 {
   margin: 10px auto auto;
   padding-bottom: 15px;
   background: white;
-  border-radius: 0.25em;
   border: 1px solid rgba(100, 100, 100, 0.3);
   -webkit-transition: .4s ease-out;
   transition: .4s ease-out;
+  /* Added*/
+  border-radius: 2em;
 }
 
 .modal-close-btn {
@@ -214,7 +217,8 @@ header h1 {
   margin: 10px auto auto;
   background: white;
   border-radius: 0.25em;
-  border: 1px solid rgba(100, 100, 100, 0.3);
+  /* Remove Border    
+    border: 1px solid rgba(100, 100, 100, 0.3);*/
 }
 
 .modal-btn-container .btn {
@@ -271,8 +275,9 @@ header h1 {
 ======================================== */
 @media (min-width: 1024px) {
   .card:hover {
-    background: white;
-    border: 1px solid rgba(50, 50, 50, 0.9);
+    background: #d5dce4;
+    /* Removed Border        
+        border: 1px solid rgba(50, 50, 50, 0.9);*/
   }
   .card:hover .card-text {
     color: #191919;

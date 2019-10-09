@@ -79,6 +79,10 @@ function generateUser(data) {
  * @param {index} index of User
  *  
  */
+$('.gallery').after('<div class="modal-container"></div>');
+ // Hides the Modal Container
+ $('.modal-container').hide();
+
 
 function generateModal(index){
 
@@ -111,11 +115,7 @@ function generateModal(index){
         `
         
         // Appends content to the gallery container
-        $('.gallery').after('<div class="modal-container"></div>')
         $('.modal-container').html(userModal);        
-
-        // Hides the Modal Container
-        $('.modal-container').hide();
 
         // Close Modal Button 
         $('button#modal-close-btn').click(function(){

@@ -137,6 +137,7 @@ function generateModal(index){
         checkIndex(index);
 }
 
+// This Function checks the index of the modal and hides the correct pagination buttons to prevent errors
 function checkIndex(index){
     if( index <= 0 ){
         $('button#modal-prev').hide();
@@ -181,6 +182,7 @@ const searchSubmit = document.getElementById('search-submit');
 searchInput.addEventListener('keyup', inputSearch, false);
 searchSubmit.addEventListener('click', inputSearch, false);
 
+// Search Function that checks each Card Emelent content for whats in the input and hides the element if nothing matches
 function inputSearch(){
     for(let i = 0; i < card.length; i++)
     if(card[i].innerText

@@ -143,7 +143,7 @@ function generateModal(index){
 function checkIndex(index){
     if( index <= 0 ){
         $('button#modal-prev').hide();
-    } else if ( index >= 11){
+    } else if ( index >= numberOfPeople - 1){
         $('button#modal-next').hide();
     }
 };
